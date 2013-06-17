@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+    {% if set.logo %}
+        <img alt="{{ set.name }} Logo" src="/{{ set.logo.url }}" />
+    {% endif %}
+    {{ set.name }}
+    <small>Official Count: {{ set.official_count }}/Total Count: {{ set.card_set.all.count }}</small>
+</h1>
+<table class="cards table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Rarity</th>
+        <th>Total</th>
+    </tr>
+    {% for c in set.card_set.all %}
+    <tr>
+        <td><a href="{{ c.url }}">{{ c.card_no }}</a></td>
+        <td>{{ c.name }}</td>
+        <td>
+        {% if c.card_type.logo %}
+            <img alt="{{ c.card_type.name }}" src="/{{ c.card_type.logo.url }}" />
+        {% else %}
+            {{ c.card_type.name }}
+        {% endif %}
+        </td>
+        <td>
+        {% if c.rarity.logo %}
+            <img alt="{{ c.rarity.name }}"  src="/{{ c.rarity.logo.url }}" />
+        {% else %}
+            {{ c.rarity.name }}
+        {% endif %}
+        </td>
+        <td>{{ c.cardinstance_set.all.count }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

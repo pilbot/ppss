@@ -1,0 +1,4 @@
+Django==1.5
+beautifulsoup4
+Pillow==2.0.0
+
