@@ -2,5 +2,5 @@ ADMINS = (
     ('Ash Ketchem', 'ash@pallettown.kanto'), # Name and email address of admin
 )
 
-MEGA_SECRET_KEY = 'some value' # Keep it secret, keep it safe
+MEGA_SECRET_KEY = 'some value' # Keep it secret, keep it safe (use http://www.miniwebtool.com/django-secret-key-generator/ to generate)
 
