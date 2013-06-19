@@ -32,13 +32,11 @@ USE_L10N = True
 USE_TZ = True
 
 MEDIA_ROOT = PKM_BASEDIR + '/media/'
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
-STATIC_ROOT = ''
+STATIC_ROOT = PKM_BASEDIR + '/static/'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    PKM_BASEDIR + '/media'
-)
+STATICFILES_DIRS = ()
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -63,7 +61,9 @@ ROOT_URLCONF = 'core.urls'
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-TEMPLATE_DIRS = (PKM_BASEDIR + '/templates')
+TEMPLATE_DIRS = (
+    PKM_BASEDIR + '/templates',
+)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'core',
     'cards',
 )
 
@@ -99,3 +100,4 @@ LOGGING = {
         },
     }
 }
+

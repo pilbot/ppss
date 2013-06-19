@@ -6,11 +6,11 @@ A basic django project to manage Pokémon card collections. The basic install wi
 Setup
 -----
 
-1. Download repository using `git`.
+1. Download repository using `git clone https://github.com/pilbot/ppss.git`.
 2. You may need to install the python dev package (e.g. On Ubuntu `sudo apt-get install python-dev`) to be able to install the requirements.
 3. (Optional) It is best to run this all in a [virtualenv](https://pypi.python.org/pypi/virtualenv). Then it doesn't mess with your system python install. 
 4. Run `pip install pip_requirements` to install the required packages.
-5. Copy the file `pkmn/custom_settings.py.example` to  `pkmn/custom_settings.py` and fill in the required fields.
+5. Copy the file `core/custom_settings.py.example` to  `core/custom_settings.py` and fill in the required fields.
 6. Run `python manage.py syncdb`.
     * Enter a personal username and password.
 7. Run `python manage.py scrapesets`, this will pull all set information from [Bulbapedia](http://bulbapedia.bulbagarden.net/) using the [MediaWiki API](http://www.mediawiki.org/wiki/API:Main_page).

@@ -19,7 +19,7 @@ class Variant(Model):
 
 class Rarity(Model):
     name = CharField(max_length=30)
-    logo = ImageField(upload_to='img/rarity', null=True, blank=True)
+    logo = ImageField(upload_to='rarity', null=True, blank=True)
 
     def __unicode__(self):
         """
@@ -30,7 +30,7 @@ class Rarity(Model):
 
 class CardType(Model):
     name = CharField(max_length=30)
-    logo = ImageField(upload_to='img/type', null=True, blank=True)
+    logo = ImageField(upload_to='type', null=True, blank=True)
 
     def __unicode__(self):
         """
@@ -47,7 +47,7 @@ class CardSet(Model):
     country = CountryField()
     name = CharField(max_length=255, blank=True)
     release = DateField(blank=True, null=True)
-    logo = ImageField(upload_to='img/set', null=True, blank=True)
+    logo = ImageField(upload_to='set', null=True, blank=True)
     partial_url = CharField(max_length=255, blank=True)
     official_count = IntegerField(blank=True, null=True)
 
