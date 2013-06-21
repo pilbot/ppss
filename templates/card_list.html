@@ -3,7 +3,7 @@
 {% block content %}
 <h1>
     {% if set.logo %}
-        <img alt="{{ set.name }} Logo" src="/{{ set.logo.url }}" />
+        <img alt="{{ set.name }} Logo" src="{{ set.logo.url }}" />
     {% endif %}
     {{ set.name }}
     <small>Official Count: {{ set.official_count }}/Total Count: {{ set.card_set.all.count }}</small>
