@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^set/(\d+)/', 'cards.views.set_list'),
     url(r'^card/(\d+)/new/', 'cards.views.new_cardinstance'),
     url(r'^card/(\d+)/', 'cards.views.card_detail'),
+    url(r'^cardinstance/(\d+)/delete/', 'cards.views.delete_cardinstance'),
     url(r'^cardinstance/(\d+)/', 'cards.views.edit_cardinstance'),
 
     url(r'^$', 'cards.views.index'),

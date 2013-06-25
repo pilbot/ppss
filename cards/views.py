@@ -77,3 +77,9 @@ def edit_cardinstance(request, instance_id):
     return render_to_response('cardinstance.html', data,
         context_instance=RequestContext(request))
 
+def delete_cardinstance(request, instance_id):
+    ci = get_object_or_404(CardInstance, pk=instance_id)
+    card_id = ci.card.id
+    ci.delete()
+    return redirect('/card/{0}'.format(str(card_id)))
+

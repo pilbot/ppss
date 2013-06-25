@@ -25,6 +25,9 @@
             {% for instance in variant.list %}
                 <li>
                     {{ instance.condition }} ({{ instance.location }})
+                    <a class="delete-btn btn pull-right" href="{% url "cards.views.delete_cardinstance" instance.id %}">
+                        <i class="icon-trash"></i>
+                    </a>
                     <a class="btn pull-right" href="{% url "cards.views.edit_cardinstance" instance.id %}">
                         <i class="icon-edit"></i>
                     </a>
