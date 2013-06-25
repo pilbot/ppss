@@ -154,7 +154,7 @@ class Command(BaseCommand):
                             card_type=card_type, rarity=rarity)
 
                         if name_node.a is not None and name_node.a != -1:
-                            card.url = BASE_URL.format(name_node.a['href'])
+                            card.url = BASE_URL.format(name_node.a['href'][1:])
 
                         card.save()
                         self.stdout.write("{0}/{1} - {2} ({3})\n".format(

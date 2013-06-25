@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+    {% if card.rarity.logo %}
+    <img alt="{{ card.rarity.name }}"  src="{{ card.rarity.logo.url }}" />
+    {% else %}
+    {{ card.rarity.name }}
+    {% endif %}
+    {{ card.card_no }}/{{ card.card_set.official_count }} - {{ card.name }}
+    <small>{{ card.card_set.name }}</small>
+</h1>
+<a class="btn btn-mini" href="{{ card.url }}">Bulbapedia</a>
+<a class="btn btn-mini" href="{% url "cards.views.new_cardinstance" card.id %}">Add Card&hellip;</a>
+{% regroup card.instances by variant as variant_list %}
+<table class="table">
+    <tr>
+        <th>Variant</th>
+        <th>Condition &amp; Location</th>
+        <th>&nbsp;</th>
+    </tr>
+    {% for variant in variant_list %}
+    <tr>
+        <td>{{ variant.grouper }}</td>
+        <td>
+            <ul>
+            {% for instance in variant.list %}
+                <li>
+                    {{ instance.condition }} ({{ instance.location }})
+                    <a class="btn pull-right" href="{% url "cards.views.edit_cardinstance" instance.id %}">
+                        <i class="icon-edit"></i>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <th>Total</th>
+        <th>{{ card.instances.count }}</th>
+    </tr>
+</table>
+{% endblock %}

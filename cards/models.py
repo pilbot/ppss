@@ -8,14 +8,29 @@ from django.db.models.fields.files import ImageField
 class Location(Model):
     name = CharField(max_length=30)
 
+    def __unicode__(self):
+        """
+        The string representation of the location.
+        """
+        return self.name
 
 class Condition(Model):
     name = CharField(max_length=30)
 
+    def __unicode__(self):
+        """
+        The string representation of the condition.
+        """
+        return self.name
 
 class Variant(Model):
     name = CharField(max_length=30)
 
+    def __unicode__(self):
+        """
+        The string representation of the variant.
+        """
+        return self.name
 
 class Rarity(Model):
     name = CharField(max_length=30)
@@ -57,6 +72,10 @@ class CardSet(Model):
         """
         return self.name 
 
+
+CARD_FMT = "{card.card_no}/{card.card_set.official_count} - {card.name}"
+
+
 class Card(Model):
 
     class Meta:
@@ -68,6 +87,10 @@ class Card(Model):
     url = URLField()
     card_type = ForeignKey(CardType)
     rarity = ForeignKey(Rarity)
+
+    @property
+    def instances(self):
+        return self.cardinstance_set.all().order_by("variant")
 
 
 class CardInstance(Model):

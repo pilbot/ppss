@@ -18,8 +18,8 @@
     </tr>
     {% for c in set.card_set.all %}
     <tr>
-        <td><a href="{{ c.url }}">{{ c.card_no }}</a></td>
-        <td>{{ c.name }}</td>
+        <td>{{ c.card_no }}</td>
+        <td><a href="{% url "cards.views.card_detail" c.id %}">{{ c.name }}</a></td>
         <td>
         {% if c.card_type.logo %}
             <img alt="{{ c.card_type.name }}" src="{{ c.card_type.logo.url }}" />
@@ -35,8 +35,8 @@
         {% endif %}
         </td>
         <td>
-            <span class="badge{% if c.cardinstance_set.all.count != 0 %} badge-success{% endif %}">
-                {{ c.cardinstance_set.all.count }}
+            <span class="badge{% if c.instances.count != 0 %} badge-success{% endif %}">
+                {{ c.instances.count }}
             </span>
         </td>
     </tr>
