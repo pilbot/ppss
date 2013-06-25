@@ -7,17 +7,15 @@
     {% else %}
     {{ card.rarity.name }}
     {% endif %}
-    {{ card.card_no }}/{{ card.card_set.official_count }} - {{ card.name }}
+    <a href="{{ card.url }}">{{ card.card_no }}/{{ card.card_set.official_count }} - {{ card.name }}</a>
     <small>{{ card.card_set.name }}</small>
+    <a class="btn" href="{% url "cards.views.new_cardinstance" card.id %}"><i class="icon-plus"></i></a>
 </h1>
-<a class="btn btn-mini" href="{{ card.url }}">Bulbapedia</a>
-<a class="btn btn-mini" href="{% url "cards.views.new_cardinstance" card.id %}">Add Card&hellip;</a>
 {% regroup card.instances by variant as variant_list %}
-<table class="table">
+<table class="table table-hover cardinstances">
     <tr>
         <th>Variant</th>
         <th>Condition &amp; Location</th>
-        <th>&nbsp;</th>
     </tr>
     {% for variant in variant_list %}
     <tr>
@@ -38,7 +36,7 @@
     {% endfor %}
     <tr>
         <th>Total</th>
-        <th>{{ card.instances.count }}</th>
+        <th class="total-value">{{ card.instances.count }}</th>
     </tr>
 </table>
 {% endblock %}

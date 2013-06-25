@@ -1,9 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action="" method="post">
+<h2>{{ card.name }} <small>{{ card.card_set.name }}</small></h2>
+<form class="form-horizontal" action="" method="post">
 {% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Save" />
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}
+{% for field in form.visible_fields %}
+    <div class="control-group">
+        {{ field.errors }}
+        <label class="control-label">{{ field.label_tag }}</label>
+        <div class="controls">
+            {{ field }}
+        </div>
+    </div>
+{% endfor %}
+<input class="btn" type="submit" value="Save" />
 </form>
 {% endblock %}

@@ -40,6 +40,10 @@ def card_detail(request, card_id=None):
 
 def new_cardinstance(request, card_id):
     ci = CardInstance(card=get_object_or_404(Card, pk=card_id))
+    data = {
+        "card": ci.card,
+        "sets": get_ordered_sets()
+    }
 
     if request.method == "POST":
         form = CardForm(request.POST, instance=ci)
@@ -49,12 +53,17 @@ def new_cardinstance(request, card_id):
     else:
         form = CardForm(instance=ci)
 
-    return render_to_response('cardinstance.html', {'form': form},
+    data['form'] = form
+    return render_to_response('cardinstance.html', data,
         context_instance=RequestContext(request))
 
 
 def edit_cardinstance(request, instance_id):
     ci = get_object_or_404(CardInstance, pk=instance_id)
+    data = {
+        "card": ci.card,
+        "sets": get_ordered_sets()
+    }
 
     if request.method == 'POST':
         form = CardForm(request.POST, instance=ci)
@@ -64,6 +73,7 @@ def edit_cardinstance(request, instance_id):
     else:
         form = CardForm(instance=ci)
 
-    return render_to_response('cardinstance.html', {'form': form},
+    data['form'] = form
+    return render_to_response('cardinstance.html', data,
         context_instance=RequestContext(request))
 
